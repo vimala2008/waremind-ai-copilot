@@ -120,9 +120,10 @@ export interface Bottleneck {
 
 export function detectBottleneck(throughput: StageThroughput[]): Bottleneck | null {
   if (!throughput.length) return null;
-  const slowest = [...throughput].sort((a, b) => a.ordersPerHour - b.ordersPerHour)[0];
-  const fastest = [...throughput].sort((a, b) => b.ordersPerHour - a.ordersPerHour)[0];
-  if (slowest.stage === fastest.stage) return null;
+  const sorted = [...throughput].sort((a, b) => a.ordersPerHour - b.ordersPerHour);
+  const slowest = sorted[0];
+  const fastest = sorted[sorted.length - 1];
+  if (!slowest || !fastest || slowest.stage === fastest.stage) return null;
   return {
     stage: slowest.stage,
     ordersPerHour: slowest.ordersPerHour,
@@ -253,17 +254,18 @@ export function generateInsights(
   const urgentBlocked = orders.filter(
     (o) => o.status === "Blocked" && (o.priority === "Critical" || o.priority === "Urgent"),
   );
-  if (urgentBlocked.length) {
+  const topBlocked = urgentBlocked[0];
+  if (topBlocked) {
     insights.push({
       id: "prioritize-queue",
       kind: "prioritization",
       title: "Re-sequence the fulfilment queue",
       finding: `${urgentBlocked.length} high-priority orders are blocked (${urgentBlocked.map((o) => o.id).join(", ")}).`,
       reason: "Priority weighting places these orders ahead of the current queue order, and their deadlines are today.",
-      recommendation: `Move ${urgentBlocked[0].id} to the front of the picking queue and defer Low priority orders by one wave.`,
+      recommendation: `Move ${topBlocked.id} to the front of the picking queue and defer Low priority orders by one wave.`,
       confidence: 0.86,
       severity: "high",
-      action: { type: "advance", orderId: urgentBlocked[0].id },
+      action: { type: "advance", orderId: topBlocked.id },
     });
   }
 
@@ -411,5 +413,5 @@ export function pendingOrdersForProduct(productId: string, orders: Order[]) {
 
 export function nextStage(stage: Stage): Stage {
   const i = stageIndex(stage);
-  return WORKFLOW_STAGES[Math.min(WORKFLOW_STAGES.length - 1, i + 1)];
+  return WORKFLOW_STAGES[Math.min(WORKFLOW_STAGES.length - 1, i + 1)] ?? stage;
 }
