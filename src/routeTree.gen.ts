@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AllocationRouteImport } from './routes/allocation'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as PickingRouteImport } from './routes/picking'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const OrdersRoute = OrdersRouteImport.update({
   path: '/orders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PickingRoute = PickingRouteImport.update({
+  id: '/picking',
+  path: '/picking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
+  '/picking': typeof PickingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
+  '/picking': typeof PickingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
+  '/picking': typeof PickingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/allocation' | '/inventory' | '/orders'
+  fullPaths: '/' | '/allocation' | '/inventory' | '/orders' | '/picking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/allocation' | '/inventory' | '/orders'
-  id: '__root__' | '/' | '/allocation' | '/inventory' | '/orders'
+  to: '/' | '/allocation' | '/inventory' | '/orders' | '/picking'
+  id: '__root__' | '/' | '/allocation' | '/inventory' | '/orders' | '/picking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   AllocationRoute: typeof AllocationRoute
   InventoryRoute: typeof InventoryRoute
   OrdersRoute: typeof OrdersRoute
+  PickingRoute: typeof PickingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/picking': {
+      id: '/picking'
+      path: '/picking'
+      fullPath: '/picking'
+      preLoaderRoute: typeof PickingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AllocationRoute: AllocationRoute,
   InventoryRoute: InventoryRoute,
   OrdersRoute: OrdersRoute,
+  PickingRoute: PickingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
