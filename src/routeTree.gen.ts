@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AllocationRouteImport } from './routes/allocation'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
+import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as DispatchRouteImport } from './routes/dispatch'
 import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as InventoryRouteImport } from './routes/inventory'
@@ -32,6 +33,11 @@ const AllocationRoute = AllocationRouteImport.update({
 const AnalyticsRoute = AnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CopilotRoute = CopilotRouteImport.update({
+  id: '/copilot',
+  path: '/copilot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DispatchRoute = DispatchRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/allocation': typeof AllocationRoute
   '/analytics': typeof AnalyticsRoute
+  '/copilot': typeof CopilotRoute
   '/dispatch': typeof DispatchRoute
   '/exceptions': typeof ExceptionsRoute
   '/inventory': typeof InventoryRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/allocation': typeof AllocationRoute
   '/analytics': typeof AnalyticsRoute
+  '/copilot': typeof CopilotRoute
   '/dispatch': typeof DispatchRoute
   '/exceptions': typeof ExceptionsRoute
   '/inventory': typeof InventoryRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/allocation': typeof AllocationRoute
   '/analytics': typeof AnalyticsRoute
+  '/copilot': typeof CopilotRoute
   '/dispatch': typeof DispatchRoute
   '/exceptions': typeof ExceptionsRoute
   '/inventory': typeof InventoryRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/allocation'
     | '/analytics'
+    | '/copilot'
     | '/dispatch'
     | '/exceptions'
     | '/inventory'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/allocation'
     | '/analytics'
+    | '/copilot'
     | '/dispatch'
     | '/exceptions'
     | '/inventory'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/allocation'
     | '/analytics'
+    | '/copilot'
     | '/dispatch'
     | '/exceptions'
     | '/inventory'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AllocationRoute: typeof AllocationRoute
   AnalyticsRoute: typeof AnalyticsRoute
+  CopilotRoute: typeof CopilotRoute
   DispatchRoute: typeof DispatchRoute
   ExceptionsRoute: typeof ExceptionsRoute
   InventoryRoute: typeof InventoryRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/analytics'
       fullPath: '/analytics'
       preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/copilot': {
+      id: '/copilot'
+      path: '/copilot'
+      fullPath: '/copilot'
+      preLoaderRoute: typeof CopilotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dispatch': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AllocationRoute: AllocationRoute,
   AnalyticsRoute: AnalyticsRoute,
+  CopilotRoute: CopilotRoute,
   DispatchRoute: DispatchRoute,
   ExceptionsRoute: ExceptionsRoute,
   InventoryRoute: InventoryRoute,
