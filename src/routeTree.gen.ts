@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AllocationRouteImport } from './routes/allocation'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as OrdersRouteImport } from './routes/orders'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AllocationRoute = AllocationRouteImport.update({
+  id: '/allocation',
+  path: '/allocation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InventoryRoute = InventoryRouteImport.update({
@@ -31,30 +37,34 @@ const OrdersRoute = OrdersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/allocation': typeof AllocationRoute
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inventory' | '/orders'
+  fullPaths: '/' | '/allocation' | '/inventory' | '/orders'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inventory' | '/orders'
-  id: '__root__' | '/' | '/inventory' | '/orders'
+  to: '/' | '/allocation' | '/inventory' | '/orders'
+  id: '__root__' | '/' | '/allocation' | '/inventory' | '/orders'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AllocationRoute: typeof AllocationRoute
   InventoryRoute: typeof InventoryRoute
   OrdersRoute: typeof OrdersRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/allocation': {
+      id: '/allocation'
+      path: '/allocation'
+      fullPath: '/allocation'
+      preLoaderRoute: typeof AllocationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/inventory': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AllocationRoute: AllocationRoute,
   InventoryRoute: InventoryRoute,
   OrdersRoute: OrdersRoute,
 }
