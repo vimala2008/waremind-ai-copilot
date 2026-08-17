@@ -17,6 +17,7 @@ import { Route as ExceptionsRouteImport } from './routes/exceptions'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PickingRouteImport } from './routes/picking'
+import { Route as SimulatorRouteImport } from './routes/simulator'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const PickingRoute = PickingRouteImport.update({
   path: '/picking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimulatorRoute = SimulatorRouteImport.update({
+  id: '/simulator',
+  path: '/simulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/picking': typeof PickingRoute
+  '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/picking': typeof PickingRoute
+  '/simulator': typeof SimulatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/inventory': typeof InventoryRoute
   '/orders': typeof OrdersRoute
   '/picking': typeof PickingRoute
+  '/simulator': typeof SimulatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/orders'
     | '/picking'
+    | '/simulator'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/orders'
     | '/picking'
+    | '/simulator'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/orders'
     | '/picking'
+    | '/simulator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +144,7 @@ export interface RootRouteChildren {
   InventoryRoute: typeof InventoryRoute
   OrdersRoute: typeof OrdersRoute
   PickingRoute: typeof PickingRoute
+  SimulatorRoute: typeof SimulatorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PickingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simulator': {
+      id: '/simulator'
+      path: '/simulator'
+      fullPath: '/simulator'
+      preLoaderRoute: typeof SimulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryRoute: InventoryRoute,
   OrdersRoute: OrdersRoute,
   PickingRoute: PickingRoute,
+  SimulatorRoute: SimulatorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
