@@ -11,6 +11,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { Sidebar } from "@/components/warehouse/Sidebar";
+import { TopBar } from "@/components/warehouse/TopBar";
+import { CopilotPanel } from "@/components/warehouse/CopilotPanel";
+import { Intro } from "@/components/warehouse/Intro";
+import { WarehouseBackdrop } from "@/components/warehouse/WarehouseBackdrop";
+import { WarehouseProvider } from "@/state/warehouse-store";
+import { VoiceProvider } from "@/state/voice-store";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +85,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "WareMind — Autonomous Warehouse Copilot" },
+      {
+        name: "description",
+        content:
+          "WareMind is an AI warehouse command center for smart allocation, picking, dispatch and exception handling.",
+      },
+      { name: "author", content: "WareMind" },
+      { property: "og:title", content: "WareMind — Autonomous Warehouse Copilot" },
+      {
+        property: "og:description",
+        content: "AI warehouse command center for order fulfilment, allocation and exception handling.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -102,7 +117,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
@@ -119,8 +134,29 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <VoiceProvider>
+        <WarehouseProvider>
+          <Intro />
+          <div className="relative min-h-screen">
+            <WarehouseBackdrop />
+            <div className="relative flex min-h-screen">
+              <Sidebar />
+              <div className="flex min-w-0 flex-1 flex-col">
+                <TopBar />
+                <div className="flex flex-1 gap-4 px-4 py-5 lg:px-6">
+                  <main className="min-w-0 flex-1">
+                    {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+                    <Outlet />
+                  </main>
+                  <CopilotPanel />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Toaster position="top-right" />
+        </WarehouseProvider>
+      </VoiceProvider>
     </QueryClientProvider>
   );
 }
+
