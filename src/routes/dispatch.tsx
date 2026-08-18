@@ -8,9 +8,9 @@ import { orderQuantity } from "@/lib/warehouse-logic";
 export const Route = createFileRoute("/dispatch")({
   head: () => ({
     meta: [
-      { title: "Dispatch — WareMind" },
+      { title: "Dispatch — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Dispatch-ready orders, carrier handover confirmation and shipped order log." },
-      { property: "og:title", content: "Dispatch — WareMind" },
+      { property: "og:title", content: "Dispatch — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Dispatch-ready orders and carrier handover confirmation." },
     ],
   }),

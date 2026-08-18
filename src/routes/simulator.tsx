@@ -9,9 +9,9 @@ import { available, simulateStockChange } from "@/lib/warehouse-logic";
 export const Route = createFileRoute("/simulator")({
   head: () => ({
     meta: [
-      { title: "What-If Simulator — WareMind" },
+      { title: "What-If Simulator — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Model stock changes and see projected status, risk, impacted orders and recommended actions." },
-      { property: "og:title", content: "What-If Simulator — WareMind" },
+      { property: "og:title", content: "What-If Simulator — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Model stock changes and preview the engine's recommended actions." },
     ],
   }),

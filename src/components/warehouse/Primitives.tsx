@@ -17,7 +17,7 @@ export function GlassCard({
     <div
       style={{ animationDelay: `${delay}ms` }}
       className={cn(
-        "glass animate-rise rounded-2xl transition-all duration-300 hover:-translate-y-0.5",
+        "glass hover-lift animate-rise rounded-2xl",
         glow && "glow-ring",
         className,
       )}
@@ -141,8 +141,8 @@ export function Gauge({ score, size = 190 }: { score: number; size?: number }) {
       <svg width={size} height={size} className="-rotate-90">
         <defs>
           <linearGradient id="wm-gauge" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="oklch(0.5 0.24 268)" />
-            <stop offset="100%" stopColor="oklch(0.78 0.15 210)" />
+            <stop offset="0%" stopColor="oklch(0.58 0.22 262)" />
+            <stop offset="100%" stopColor="oklch(0.86 0.15 197)" />
           </linearGradient>
         </defs>
         <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="oklch(0.75 0.07 265 / 18%)" strokeWidth="12" />
@@ -160,7 +160,7 @@ export function Gauge({ score, size = 190 }: { score: number; size?: number }) {
         />
       </svg>
       <div className="absolute text-center">
-        <div className="font-display text-4xl font-bold leading-none">{score}</div>
+        <div className="font-display text-4xl font-bold leading-none kpi-number">{score}</div>
         <div className="text-xs text-muted-foreground">/ 100 health</div>
       </div>
     </div>

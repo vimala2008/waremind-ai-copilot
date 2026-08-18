@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/exceptions")({
   head: () => ({
     meta: [
-      { title: "Exceptions — WareMind" },
+      { title: "Exceptions — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Damaged, missing, shortage and delay exceptions with engine decisions and resolutions." },
-      { property: "og:title", content: "Exceptions — WareMind" },
+      { property: "og:title", content: "Exceptions — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Exception triage with deterministic decisions and resolutions." },
     ],
   }),

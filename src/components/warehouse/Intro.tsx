@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Radar } from "lucide-react";
 import { useVoice } from "@/state/voice-store";
 
-const WORD = "WAREMIND".split("");
+const WORD = "SMART WAREHOUSE".split("");
 
 export function Intro() {
   const [visible, setVisible] = useState(true);
@@ -12,7 +12,7 @@ export function Intro() {
   useEffect(() => {
     const speakTimer = window.setTimeout(() => {
       speak(
-        "Welcome to WareMind. Your autonomous warehouse copilot is online. Warehouse telemetry synced.",
+        "Welcome to the Smart Warehouse Operations and Order Fulfillment System. Your autonomous warehouse copilot is online. Warehouse telemetry synced.",
       );
     }, 900);
     const fadeTimer = window.setTimeout(() => setFading(true), 2600);
@@ -48,14 +48,22 @@ export function Intro() {
                 animation: `wm-letter 0.6s cubic-bezier(0.22,1,0.36,1) ${i * 90}ms both`,
               }}
             >
-              {i < 4 ? (
+              {letter === " " ? (
+                "\u00A0"
+              ) : i < 5 ? (
                 letter
               ) : (
-                <span className="text-gradient">{letter}</span>
+                <span className="text-gradient-cyan">{letter}</span>
               )}
             </span>
           ))}
         </h1>
+        <p
+          className="mt-3 font-display text-base font-semibold uppercase tracking-[0.2em] text-primary-glow sm:text-xl"
+          style={{ animation: "wm-rise 0.7s cubic-bezier(0.22,1,0.36,1) 750ms both" }}
+        >
+          Operations &amp; Order Fulfillment System
+        </p>
         <p
           className="mt-4 text-xs uppercase tracking-[0.4em] text-muted-foreground sm:text-sm"
           style={{ animation: "wm-rise 0.7s cubic-bezier(0.22,1,0.36,1) 900ms both" }}

@@ -85,14 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "WareMind — Autonomous Warehouse Copilot" },
+      { title: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         name: "description",
         content:
-          "WareMind is an AI warehouse command center for smart allocation, picking, dispatch and exception handling.",
+          "Smart Warehouse Operations & Order Fulfillment System is an AI warehouse command center for smart allocation, picking, dispatch and exception handling.",
       },
-      { name: "author", content: "WareMind" },
-      { property: "og:title", content: "WareMind — Autonomous Warehouse Copilot" },
+      { name: "author", content: "Smart Warehouse Operations & Order Fulfillment System" },
+      { property: "og:title", content: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         property: "og:description",
         content: "AI warehouse command center for order fulfilment, allocation and exception handling.",

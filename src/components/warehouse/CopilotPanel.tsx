@@ -29,13 +29,14 @@ export function CopilotPanel() {
   }
 
   return (
-    <aside className="glass sticky top-20 hidden h-[calc(100vh-6rem)] w-[340px] shrink-0 flex-col overflow-hidden rounded-2xl xl:flex">
+    <aside className="glass cyan-ring sticky top-20 hidden h-[calc(100vh-6rem)] w-[340px] shrink-0 flex-col overflow-hidden rounded-2xl xl:flex">
       <div className="flex items-center gap-2 border-b border-border/70 px-4 py-3">
-        <span className="grid size-9 place-items-center rounded-xl bg-gradient-primary">
-          <Bot className="size-5 text-primary-foreground" />
+        <span className="relative grid size-9 place-items-center rounded-xl bg-gradient-primary cyan-ring">
+          <Bot className="size-5 text-primary-glow drop-shadow-[0_0_8px_oklch(0.84_0.15_197/70%)]" />
+          <span className="absolute inset-0 rounded-xl ring-1 ring-inset ring-primary-glow/40 animate-pulse-glow" />
         </span>
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold">WareMind AI Copilot</p>
+          <p className="truncate text-sm font-semibold">AI Warehouse Copilot</p>
           <p className="text-[11px] text-muted-foreground">{insights.length} live recommendation(s)</p>
         </div>
         <button
@@ -54,7 +55,7 @@ export function CopilotPanel() {
           </p>
         ) : (
           insights.map((i) => (
-            <div key={i.id} className={cn("rounded-2xl border p-3", severityStyles[i.severity])}>
+            <div key={i.id} className={cn("rounded-2xl border p-3 hover-lift", severityStyles[i.severity])}>
               <div className="flex items-center gap-2">
                 <Sparkles className="size-3.5 text-primary-glow" />
                 <span className="text-xs font-semibold">{i.title}</span>

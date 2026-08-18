@@ -21,8 +21,8 @@ export function GlobalSearch() {
 
   return (
     <div className="relative w-full max-w-md">
-      <div className="flex items-center gap-2 rounded-xl border border-input bg-secondary/50 px-3 py-2 transition-shadow focus-within:glow-ring">
-        <Search className="size-4 text-muted-foreground" />
+      <div className="glass flex items-center gap-2 rounded-xl px-3 py-2 backdrop-blur-xl transition-shadow focus-within:cyan-ring">
+        <Search className="size-4 text-primary-glow drop-shadow-[0_0_6px_oklch(0.84_0.15_197/60%)]" />
         <input
           value={query}
           onChange={(e) => {
@@ -54,7 +54,7 @@ export function GlobalSearch() {
                   if (hit.kind === "order") {
                     const order = orders.find((o) => o.id === hit.orderId)!;
                     return (
-                      <li key={`o-${hit.orderId}`} className="rounded-xl border border-border/70 bg-secondary/40 p-3">
+                      <li key={`o-${hit.orderId}`} className="rounded-xl border border-border/70 bg-secondary/40 p-3 transition-colors hover:border-primary-glow/40">
                         <div className="flex items-center gap-2">
                           <ClipboardList className="size-4 text-primary-glow" />
                           <span className="font-medium">{hit.title}</span>
@@ -70,7 +70,7 @@ export function GlobalSearch() {
                   const product = products.find((p) => p.id === hit.productId)!;
                   const pending = pendingOrdersForProduct(product.id, orders);
                   return (
-                    <li key={`p-${hit.kind}-${hit.productId}`} className="rounded-xl border border-border/70 bg-secondary/40 p-3">
+                    <li key={`p-${hit.kind}-${hit.productId}`} className="rounded-xl border border-border/70 bg-secondary/40 p-3 transition-colors hover:border-primary-glow/40">
                       <div className="flex flex-wrap items-center gap-2">
                         {hit.kind === "location" ? (
                           <MapPin className="size-4 text-primary-glow" />

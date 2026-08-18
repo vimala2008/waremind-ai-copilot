@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/orders")({
   head: () => ({
     meta: [
-      { title: "Orders — WareMind" },
+      { title: "Orders — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Priority-ranked order queue with live workflow stages and allocation progress." },
-      { property: "og:title", content: "Orders — WareMind" },
+      { property: "og:title", content: "Orders — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Priority-ranked order queue with live workflow stages." },
     ],
   }),

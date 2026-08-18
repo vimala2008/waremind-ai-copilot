@@ -8,9 +8,9 @@ import { detectBottleneck } from "@/lib/warehouse-logic";
 export const Route = createFileRoute("/picking")({
   head: () => ({
     meta: [
-      { title: "Picking & Packing — WareMind" },
+      { title: "Picking & Packing — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Optimised pick routes by zone and bin, packing queue and throughput bottleneck detection." },
-      { property: "og:title", content: "Picking & Packing — WareMind" },
+      { property: "og:title", content: "Picking & Packing — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Optimised pick routes, packing queue and bottleneck detection." },
     ],
   }),

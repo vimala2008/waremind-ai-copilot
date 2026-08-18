@@ -22,13 +22,13 @@ import { WORKFLOW_STAGES } from "@/data/warehouse-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WareMind — Autonomous Warehouse Command Center" },
+      { title: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         name: "description",
         content:
           "Live warehouse health, order pipeline, inventory risk and AI copilot decisions in one command center.",
       },
-      { property: "og:title", content: "WareMind — Autonomous Warehouse Command Center" },
+      { property: "og:title", content: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         property: "og:description",
         content: "Live warehouse health, order pipeline and AI-driven fulfilment decisions.",
@@ -67,10 +67,10 @@ function Dashboard() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-xs uppercase tracking-wider text-muted-foreground">{kpi.label}</p>
-                <p className="mt-2 font-display text-3xl font-bold">{kpi.value}</p>
+                <p className="mt-2 font-display text-3xl font-bold kpi-number animate-count-in">{kpi.value}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{kpi.hint}</p>
               </div>
-              <span className="grid size-10 place-items-center rounded-xl bg-secondary/60 text-primary-glow">
+              <span className="grid size-10 place-items-center rounded-xl bg-secondary/60 text-primary-glow shadow-[0_0_18px_-4px_oklch(0.84_0.15_197/45%)]">
                 <kpi.icon className="size-5" />
               </span>
             </div>
@@ -91,7 +91,7 @@ function Dashboard() {
                     <span className="font-medium">{f.score}</span>
                   </div>
                   <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-muted">
-                    <div className="h-full rounded-full bg-gradient-primary transition-all duration-700" style={{ width: `${f.score}%` }} />
+                    <div className="h-full rounded-full bg-gradient-cyan transition-all duration-700" style={{ width: `${f.score}%` }} />
                   </div>
                   <p className="mt-0.5 text-[11px] text-muted-foreground">{f.detail}</p>
                 </div>
@@ -118,9 +118,9 @@ function Dashboard() {
                 return (
                   <div key={stage} className="rounded-xl border border-border/70 bg-secondary/40 p-3">
                     <p className="text-[11px] uppercase tracking-wide text-muted-foreground">{stage}</p>
-                    <p className="mt-1 font-display text-2xl font-bold">{count}</p>
+                    <p className="mt-1 font-display text-2xl font-bold kpi-number animate-count-in">{count}</p>
                     <div className="mt-2 h-1 overflow-hidden rounded-full bg-muted">
-                      <div className="h-full rounded-full bg-gradient-primary" style={{ width: `${(count / maxStage) * 100}%` }} />
+                      <div className="h-full rounded-full bg-gradient-cyan" style={{ width: `${(count / maxStage) * 100}%` }} />
                     </div>
                   </div>
                 );

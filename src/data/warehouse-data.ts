@@ -1,5 +1,5 @@
 /**
- * Centralized WareMind warehouse dataset.
+ * Centralized warehouse dataset.
  * Structured so products / orders / exceptions can be added easily,
  * and so it can later be swapped for a Supabase-backed source.
  */
