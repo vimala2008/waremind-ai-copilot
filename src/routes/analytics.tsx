@@ -25,9 +25,9 @@ import { stageCounts, stockStatus } from "@/lib/warehouse-logic";
 export const Route = createFileRoute("/analytics")({
   head: () => ({
     meta: [
-      { title: "Analytics — WareMind" },
+      { title: "Analytics — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Fulfilment trends, exception breakdown, stage load and inventory status distribution." },
-      { property: "og:title", content: "Analytics — WareMind" },
+      { property: "og:title", content: "Analytics — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Fulfilment trends, exception breakdown and inventory distribution." },
     ],
   }),

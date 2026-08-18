@@ -22,13 +22,13 @@ import { WORKFLOW_STAGES } from "@/data/warehouse-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WareMind — Autonomous Warehouse Command Center" },
+      { title: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         name: "description",
         content:
           "Live warehouse health, order pipeline, inventory risk and AI copilot decisions in one command center.",
       },
-      { property: "og:title", content: "WareMind — Autonomous Warehouse Command Center" },
+      { property: "og:title", content: "Smart Warehouse Operations & Order Fulfillment System" },
       {
         property: "og:description",
         content: "Live warehouse health, order pipeline and AI-driven fulfilment decisions.",

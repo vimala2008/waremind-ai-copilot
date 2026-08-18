@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/copilot")({
   head: () => ({
     meta: [
-      { title: "AI Copilot — WareMind" },
+      { title: "AI Copilot — Smart Warehouse Operations & Order Fulfillment System" },
       { name: "description", content: "Ask the warehouse copilot about stock, orders and bottlenecks and apply its recommendations instantly." },
-      { property: "og:title", content: "AI Copilot — WareMind" },
+      { property: "og:title", content: "AI Copilot — Smart Warehouse Operations & Order Fulfillment System" },
       { property: "og:description", content: "Deterministic warehouse reasoning with one-click actions." },
     ],
   }),
@@ -39,7 +39,7 @@ function CopilotPage() {
     {
       id: "seed",
       role: "copilot",
-      text: "WareMind copilot online. Ask me about a SKU, an order, stock risk or the current bottleneck — I reason over live warehouse state.",
+      text: "Warehouse copilot online. Ask me about a SKU, an order, stock risk or the current bottleneck — I reason over live warehouse state.",
     },
   ]);
 

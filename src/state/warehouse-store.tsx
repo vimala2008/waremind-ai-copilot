@@ -52,7 +52,7 @@ const now = () =>
 export function WarehouseProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState(initialWarehouseState);
   const [activity, setActivity] = useState<ActivityEntry[]>([
-    { id: "seed-1", message: "WareMind copilot online — warehouse telemetry synced.", at: "--:--:--" },
+    { id: "seed-1", message: "Warehouse copilot online — warehouse telemetry synced.", at: "--:--:--" },
   ]);
 
   useEffect(() => {
