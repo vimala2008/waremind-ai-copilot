@@ -11,6 +11,14 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Toaster } from "@/components/ui/sonner";
+import { Sidebar } from "@/components/warehouse/Sidebar";
+import { TopBar } from "@/components/warehouse/TopBar";
+import { CopilotPanel } from "@/components/warehouse/CopilotPanel";
+import { Intro } from "@/components/warehouse/Intro";
+import { WarehouseBackdrop } from "@/components/warehouse/WarehouseBackdrop";
+import { WarehouseProvider } from "@/state/warehouse-store";
+import { VoiceProvider } from "@/state/voice-store";
 
 function NotFoundComponent() {
   return (
