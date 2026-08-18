@@ -33,6 +33,7 @@
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-info: var(--info);
+  --color-cyan: var(--cyan);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -176,6 +177,57 @@
   background: var(--gradient-glow);
 }
 
+@utility bg-gradient-cyan {
+  background: var(--gradient-cyan);
+}
+
+@utility bg-gradient-sidebar {
+  background: var(--gradient-sidebar);
+}
+
+@utility cyan-ring {
+  box-shadow: var(--shadow-cyan);
+}
+
+@utility kpi-number {
+  color: var(--cyan);
+  text-shadow: 0 0 22px oklch(0.84 0.15 197 / 35%);
+}
+
+@utility text-gradient-cyan {
+  background: var(--gradient-cyan);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility hover-lift {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-cyan);
+  }
+}
+
+@utility live-dot {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: currentColor;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    animation: wm-ping 1.8s ease-out infinite;
+  }
+}
+
 @keyframes wm-float {
   0%,
   100% {
@@ -239,6 +291,26 @@
     transform: translateX(220%);
   }
 }
+@keyframes wm-ping {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+@keyframes wm-count-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 @keyframes wm-drive {
   from {
     transform: translateX(-15vw);
@@ -262,6 +334,9 @@
 }
 @utility animate-sweep {
   animation: wm-sweep 2.4s ease-in-out infinite;
+}
+@utility animate-count-in {
+  animation: wm-count-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @utility animate-drive {
   animation: wm-drive 22s linear infinite;
